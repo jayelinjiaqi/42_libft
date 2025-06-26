@@ -69,3 +69,57 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return ((void *)ptr);
 }
 </code> </pre>
+---
+## 📁 int isalnum(int c); (checks for an alphanumeric character; it is equivalent to (isalpha(c) || isdigit(c))
+
+<pre> <code> 
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	unsigned char		*ptr;
+	size_t				i;
+	unsigned long long	total;
+
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	total = (unsigned long long)nmemb * (unsigned long long)size;
+	if (nmemb != 0 && total / nmemb != size)
+		return (NULL);
+	i = 0;
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	while (i < nmemb * size)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return ((void *)ptr);
+}
+</code> </pre>
+---
+## 📁 int isalpha(int c);
+
+Checks  for an alphabetic character; in the standard "C" locale, it is equivalent to (isupper(c) ||  islower(c)). In  some locales, there may be additional characters for which isalpha() is true—letters which are neither uppercase nor lowercase.
+
+<pre> <code> 
+int	ft_isalnum(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	return (0);
+}
+</code> </pre>
+---
+## 📁 int isascii(int c);
+
+(checks whether c is a 7-bit unsigned char value that  fits  into the ASCII character set.
+
+<pre> <code> 
+int	ft_isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
+}
+</code> </pre>
