@@ -298,7 +298,7 @@ RETURN VALUE
 The memmove() function returns a pointer to dest.
 
 <pre> <code> 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	unsigned char		*destination;
 	const unsigned char	*source;
@@ -309,7 +309,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = 0;
 	if (destination < source)
 	{
-		while (i < len)
+		while (i < n)
 		{
 			destination[i] = source[i];
 			i++;
@@ -317,7 +317,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else if (destination > source)
 	{
-		i = len;
+		i = n;
 		while (i > 0)
 		{
 			destination[i - 1] = source[i -1];
@@ -338,14 +338,14 @@ RETURN VALUE
        The memset() function returns a pointer to the memory area s.
 
 <pre> <code> 
-void	*ft_memset(void *s, int c, size_t len)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*ptr;
 	size_t			i;
 
 	ptr = (unsigned char *)s;
 	i = 0;
-	while (i < len)
+	while (i < n)
 	{
 		ptr[i] = (unsigned char)c;
 		i++;
@@ -385,17 +385,18 @@ char	*ft_strchr(const char *s, int c)
 ---
 ## 📁 char *strdup(const char *s);
 
-DESCRIPTION
+DESCRIPTION:
        The  strdup() function returns a pointer to a new string which is a du‐
        plicate of the string s.  Memory for the new string  is  obtained  with
        malloc(3), and can be freed with free(3).
-RETURN VALUE
+
+RETURN VALUE:
        On  success,  the strdup() function returns a pointer to the duplicated
        string.  It returns NULL if insufficient memory was available, with er‐
        rno set to indicate the cause of the error.
 
 <pre> <code> 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
 	char	*ptr;
 	int		len;
@@ -403,7 +404,7 @@ char	*ft_strdup(const char *s1)
 
 	len = 0;
 	i = 0;
-	while (s1[len])
+	while (s[len])
 	{
 		len++;
 	}
@@ -412,10 +413,65 @@ char	*ft_strdup(const char *s1)
 		return (NULL);
 	while (i < len)
 	{
-		ptr[i] = s1[i];
+		ptr[i] = s[i];
 		i++;
 	}
 	ptr[i] = '\0';
 	return (ptr);
 }
+</code> </pre>
+---
+## 📁      size_t strlcat(char *dst, const char *src, size_t size);
+
+
+DESCRIPTION:
+	The strlcpy() and strlcat() functions copy and concatenate strings re‐
+     spectively.  They are designed to be safer, more consistent, and less er‐
+     ror prone replacements for strncpy(3) and strncat(3).  Unlike those func‐
+     tions, strlcpy() and strlcat() take the full size of the buffer (not just
+     the length) and guarantee to NUL-terminate the result (as long as size is
+     larger than 0 or, in the case of strlcat(), as long as there is at least
+     one byte free in dst).  Note that a byte for the NUL should be included
+     in size.  Also note that strlcpy() and strlcat() only operate on true “C”
+     strings.  This means that for strlcpy() src must be NUL-terminated and
+     for strlcat() both src and dst must be NUL-terminated.
+
+RETURN VALUE:
+       The strlcpy() and strlcat() functions return the total length of the
+     string they tried to create.  For strlcpy() that means the length of src.
+     For strlcat() that means the initial length of dst plus the length of
+     src.  While this may seem somewhat confusing, it was done to make trunca‐
+     tion detection simple.
+
+
+<pre> <code> 
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	dlen;
+	size_t	slen;
+	size_t	i;
+
+	dlen = 0;
+	slen = 0;
+	i = 0;
+	while (dst[dlen] && dlen < size)
+	{
+		dlen++;
+	}
+	while (src[slen])
+	{
+		slen++;
+	}
+	if (dlen == size)
+		return (size + slen);
+	while (src[i] && dlen + i + 1 < size)
+	{
+		dst[dlen + i] = src[i];
+		i++;
+	}
+	if (dlen + i < size)
+		dst[dlen + i] = '\0';
+	return (dlen + slen);
+}
+
 </code> </pre>
