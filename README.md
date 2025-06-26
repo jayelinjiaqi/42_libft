@@ -238,3 +238,184 @@ void	*ft_memchr(const void *s, int c, size_t n)
 }
 </code> </pre>
 ---
+## 📁 int memcmp(const void *s1, const void *s2, size_t n);
+
+The  memcmp()  function compares the first n bytes (each interpreted as unsigned char) of the memory areas s1 and s2.
+
+The memcmp() function returns  an  integer  less  than,  equal  to,  or greater than zero if the first n bytes of s1 is found, respectively, to be less than, to match, or be greater than the first n bytes of s2.
+
+For a nonzero return value, the sign is determined by the sign  of  the difference  between  the  first  pair of bytes (interpreted as unsigned char) that differ in s1 and s2.
+
+If n is zero, the return value is zero.
+<pre> <code> 
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	const unsigned char	*unsigned_s;
+	size_t				i;
+
+	unsigned_s = s;
+	i = 0;
+	while (i < n)
+	{
+		if (unsigned_s[i] == (unsigned char)c)
+			return ((void *)unsigned_s + i);
+		i++;
+	}
+	return (NULL);
+}
+</code> </pre>
+---
+## 📁 void *memcpy(void *dest, const void *src, size_t n);
+
+The  memcpy()  function  copies  n bytes from memory area src to memory area dest.  The memory areas must not overlap.  Use memmove(3)  if  the memory areas do overlap.
+
+The memcpy() function returns a pointer to dest.
+
+<pre> <code> 
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*pdest;
+	unsigned char	*psrc;
+
+	pdest = (unsigned char *)dest;
+	psrc = (unsigned char *)src;
+	while (n > 0)
+	{
+		*pdest = *psrc;
+		pdest++;
+		psrc++;
+		n--;
+	}
+	return (dest);
+}
+</code> </pre>
+---
+## 📁 void *memmove(void *dest, const void *src, size_t n);
+
+The  memmove()  function  copies n bytes from memory area src to memory area dest.  The memory areas may overlap: copying takes place as though the  bytes in src are first copied into a temporary array that does not overlap src or dest, and the bytes are then copied from  the  temporary array to dest.
+
+RETURN VALUE
+The memmove() function returns a pointer to dest.
+
+<pre> <code> 
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char		*destination;
+	const unsigned char	*source;
+	size_t				i;
+
+	destination = dst;
+	source = src;
+	i = 0;
+	if (destination < source)
+	{
+		while (i < len)
+		{
+			destination[i] = source[i];
+			i++;
+		}
+	}
+	else if (destination > source)
+	{
+		i = len;
+		while (i > 0)
+		{
+			destination[i - 1] = source[i -1];
+			i--;
+		}
+	}
+	return (dst);
+}
+</code> </pre>
+---
+## 📁 void *memset(void *s, int c, size_t n);
+
+DESCRIPTION
+       The  memset()  function  fills  the  first  n  bytes of the memory area
+       pointed to by s with the constant byte c.
+
+RETURN VALUE
+       The memset() function returns a pointer to the memory area s.
+
+<pre> <code> 
+void	*ft_memset(void *s, int c, size_t len)
+{
+	unsigned char	*ptr;
+	size_t			i;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < len)
+	{
+		ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
+}
+</code> </pre>
+---
+## 📁 char *strchr(const char *s, int c);
+
+DESCRIPTION
+       The  strchr() function returns a pointer to the first occurrence of the
+       character c in the string s.
+       Here "character" means "byte"; these functions do not work with wide or
+       multibyte characters.
+
+RETURN VALUE
+       The strchr() and strrchr() functions return a pointer  to  the  matched
+       character or NULL if the character is not found.  The terminating null
+       byte is considered part of the string, so that if  c  is  specified  as
+       '\0', these functions return a pointer to the terminator.
+
+<pre> <code> 
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)(c))
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+</code> </pre>
+---
+## 📁 char *strdup(const char *s);
+
+DESCRIPTION
+       The  strdup() function returns a pointer to a new string which is a du‐
+       plicate of the string s.  Memory for the new string  is  obtained  with
+       malloc(3), and can be freed with free(3).
+RETURN VALUE
+       On  success,  the strdup() function returns a pointer to the duplicated
+       string.  It returns NULL if insufficient memory was available, with er‐
+       rno set to indicate the cause of the error.
+
+<pre> <code> 
+char	*ft_strdup(const char *s1)
+{
+	char	*ptr;
+	int		len;
+	int		i;
+
+	len = 0;
+	i = 0;
+	while (s1[len])
+	{
+		len++;
+	}
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (NULL);
+	while (i < len)
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+</code> </pre>
