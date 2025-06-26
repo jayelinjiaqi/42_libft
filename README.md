@@ -1,6 +1,6 @@
 # 42_libft
 
-## 📁 atoi (Allocates space for count objects of size bytens memory each. Return pointer to allocated memory)
+## 📁 atoi (converts the initial portion of the string pointed to by nptr to int)
 
 <pre> <code> 
 int atoi(const char *nptr)
@@ -33,9 +33,7 @@ int atoi(const char *nptr)
 </code> </pre>
 
 ---
-## 📁 bzero (erases  the  data  in the n bytes of the memory
-       starting at the location pointed to by s, by writing zeros (bytes  con‐
-       taining '\0') to that area)
+## 📁 bzero (erases  the  data  in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes  containing '\0') to that area)
 
 <pre> <code> 
 void	ft_bzero(void *s, size_t n)
