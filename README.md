@@ -1,6 +1,7 @@
 # 42_libft
 
-## 📁 atoi (converts the initial portion of the string pointed to by nptr to int)
+## 📁 int atoi(const char *nptr); 
+Converts the initial portion of the string pointed to by nptr to int
 
 <pre> <code> 
 int atoi(const char *nptr)
@@ -33,7 +34,8 @@ int atoi(const char *nptr)
 </code> </pre>
 
 ---
-## 📁 bzero (erases  the  data  in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes  containing '\0') to that area)
+## 📁 void bzero(void *s, size_t n);
+Erases  the  data  in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes containing '\0') to that area.
 
 <pre> <code> 
 void	ft_bzero(void *s, size_t n)
@@ -43,7 +45,9 @@ void	ft_bzero(void *s, size_t n)
 </code> </pre>
 
 ---
-## 📁 calloc (allocates memory for an array of  nmemb  elements of  size bytes each and returns a pointer to the allocated memory.  The memory is set to zero.  If nmemb or size is 0,  then  calloc()  returns either  NULL,  or a unique pointer value that can later be successfully passed to free().  If the multiplication of nmemb and size would result in  integer  overflow, then calloc() returns an error.
+## 📁 void *calloc(size_t nmemb, size_t size);
+
+Allocates memory for an array of  nmemb  elements of  size bytes each and returns a pointer to the allocated memory.  The memory is set to zero.  If nmemb or size is 0,  then  calloc()  returns either  NULL,  or a unique pointer value that can later be successfully passed to free().  If the multiplication of nmemb and size would result in  integer  overflow, then calloc() returns an error.
 
 <pre> <code> 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -70,7 +74,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 }
 </code> </pre>
 ---
-## 📁 int isalnum(int c); (checks for an alphanumeric character; it is equivalent to (isalpha(c) || isdigit(c))
+## 📁 int isalnum(int c); 
+
+Checks for an alphanumeric character; it is equivalent to (isalpha(c) || isdigit(c)
 
 <pre> <code> 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -113,7 +119,7 @@ int	ft_isalnum(int c)
 ---
 ## 📁 int isascii(int c);
 
-(checks whether c is a 7-bit unsigned char value that  fits  into the ASCII character set.
+Checks whether c is a 7-bit unsigned char value that  fits  into the ASCII character set.
 
 <pre> <code> 
 int	ft_isalpha(int c)
