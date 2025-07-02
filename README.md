@@ -1,21 +1,18 @@
 # 42_libft
 
 ## 📁 int atoi(const char *nptr); 
-DESCRIPTION
-       The  atoi() function converts the initial portion of the string pointed
-       to by nptr to int.  The behavior is the same as
+DESCRIPTION:
+The  atoi() function converts the initial portion of the string pointed to by nptr to int.  The behavior is the same as
 
 strtol(nptr, NULL, 10);
 
 except that atoi() does not detect errors.
 
-The atol() and atoll() functions behave the same as atoi(), except that
-       they  convert the initial portion of the string to their return type of
-       long or long long.
+The atol() and atoll() functions behave the same as atoi(), except that they  convert the initial portion of the string to their return type of long or long long.
 
 
-RETURN VALUE
-       The converted value or 0 on error.
+RETURN VALUE:
+The converted value or 0 on error.
 
 <pre> <code> 
 int atoi(const char *nptr)
@@ -51,7 +48,6 @@ int atoi(const char *nptr)
 ## 📁 void bzero(void *s, size_t n);
 The  bzero()  function  erases  the  data  in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes  containing '\0') to that area.
 
-
 <pre> <code> 
 void	ft_bzero(void *s, size_t n)
 {
@@ -62,7 +58,18 @@ void	ft_bzero(void *s, size_t n)
 ---
 ## 📁 void *calloc(size_t nmemb, size_t size);
 
-Allocates memory for an array of  nmemb  elements of  size bytes each and returns a pointer to the allocated memory.  The memory is set to zero.  If nmemb or size is 0,  then  calloc()  returns either  NULL,  or a unique pointer value that can later be successfully passed to free().  If the multiplication of nmemb and size would result in  integer  overflow, then calloc() returns an error.
+DESCRIPTION: 
+The malloc() function allocates size bytes and returns a pointer to the allocated  memory.   The memory is not initialized.  If size is 0, then malloc() returns either NULL, or a unique pointer value that can  later be successfully passed to free().
+
+The  free()  function  frees  the memory space pointed to by ptr, which must have been returned by a previous call to  malloc(),  calloc(),  or realloc().   Otherwise, or if free(ptr) has already been called before,
+undefined behavior occurs.  If ptr is NULL, no operation is performed.
+
+The calloc() function allocates memory for an array of  nmemb  elements of  size bytes each and returns a pointer to the allocated memory.  The memory is set to zero.  If nmemb or size is 0,  then  calloc()  returns either  NULL,  or a unique pointer value that can later be successfully passed to free().  If the multiplication of nmemb and size would result in  integer  overflow, then calloc() returns an error.  By contrast, an integer overflow would not be detected in the following  call  to  malloc(),  with the result that an incorrectly sized block of memory would be allocated:
+
+malloc(nmemb * size);
+
+RETURN VALUE
+The malloc() and calloc() functions return a pointer to  the  allocated memory,  which  is  suitably  aligned for any built-in type.  On error, these functions return NULL.  NULL may also be returned by a successful call  to  malloc() with a size of zero, or by a successful call to calloc() with nmemb or size equal to zero.
 
 <pre> <code> 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -173,11 +180,16 @@ int	ft_isprint(int c)
 ---
 ## 📁 char *ft_itoa(int n);
 
-Parameters n: The integer to convert.
-Return value: The string representing the integer. NULL if the allocation fails.
-External functs: malloc
-Description: Allocates memory (using malloc(3)) and returns a string representing the integer received as an
+Description: 
+Allocates memory (using malloc(3)) and returns a string representing the integer received as an
 argument. Negative numbers must be handled.
+
+Return value: 
+The string representing the integer. NULL if the allocation fails.
+External functs: malloc
+
+Parameters n: 
+The integer to convert.
 
 <pre> <code> 
 static int	ft_intlen(int n)
@@ -233,7 +245,11 @@ char	*ft_itoa(int n)
 ---
 ## 📁 void *memchr(const void *s, int c, size_t n);
 
+DESCRIPTION:
 The  memchr()  function  scans  the  initial n bytes of the memory area pointed to by s for the first instance of c.  Both c and the  bytes  of the memory area pointed to by s are interpreted as unsigned char.
+
+RETURN VALUE:
+The  memchr()  and memrchr() functions return a pointer to the matching byte or NULL if the character does not occur in the given memory area.
 
 <pre> <code> 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -255,8 +271,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 ---
 ## 📁 int memcmp(const void *s1, const void *s2, size_t n);
 
+DESCRIPTION:
 The  memcmp()  function compares the first n bytes (each interpreted as unsigned char) of the memory areas s1 and s2.
 
+DESCRIPTION:
 The memcmp() function returns  an  integer  less  than,  equal  to,  or greater than zero if the first n bytes of s1 is found, respectively, to be less than, to match, or be greater than the first n bytes of s2.
 
 For a nonzero return value, the sign is determined by the sign  of  the difference  between  the  first  pair of bytes (interpreted as unsigned char) that differ in s1 and s2.
@@ -282,8 +300,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 ---
 ## 📁 void *memcpy(void *dest, const void *src, size_t n);
 
-The  memcpy()  function  copies  n bytes from memory area src to memory area dest.  The memory areas must not overlap.  Use memmove(3)  if  the memory areas do overlap.
+DESCRIPTION:
+The  memcpy()  function  copies  n bytes from memory area src to memory area dest.  The memory areas must not overlap.  Use memmove(3) if the memory areas do overlap.
 
+RETURN VALUE:
 The memcpy() function returns a pointer to dest.
 
 <pre> <code> 
@@ -307,9 +327,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 ---
 ## 📁 void *memmove(void *dest, const void *src, size_t n);
 
+DESCRIPTION:
 The  memmove()  function  copies n bytes from memory area src to memory area dest.  The memory areas may overlap: copying takes place as though the  bytes in src are first copied into a temporary array that does not overlap src or dest, and the bytes are then copied from  the  temporary array to dest.
 
-RETURN VALUE
+RETURN VALUE:
 The memmove() function returns a pointer to dest.
 
 <pre> <code> 
@@ -345,12 +366,11 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 ---
 ## 📁 void *memset(void *s, int c, size_t n);
 
-DESCRIPTION
-       The  memset()  function  fills  the  first  n  bytes of the memory area
-       pointed to by s with the constant byte c.
+DESCRIPTION:
+The  memset()  function  fills  the  first  n  bytes of the memory area pointed to by s with the constant byte c.
 
-RETURN VALUE
-       The memset() function returns a pointer to the memory area s.
+RETURN VALUE:
+The memset() function returns a pointer to the memory area s.
 
 <pre> <code> 
 void	*ft_memset(void *s, int c, size_t n)
@@ -371,7 +391,7 @@ void	*ft_memset(void *s, int c, size_t n)
 ---
 ## 📁 char *strchr(const char *s, int c);
 
-DESCRIPTION
+DESCRIPTION:
        The  strchr() function returns a pointer to the first occurrence of the
        character c in the string s.
        Here "character" means "byte"; these functions do not work with wide or
