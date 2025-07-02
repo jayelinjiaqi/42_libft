@@ -1,7 +1,21 @@
 # 42_libft
 
 ## 📁 int atoi(const char *nptr); 
-Converts the initial portion of the string pointed to by nptr to int
+DESCRIPTION
+       The  atoi() function converts the initial portion of the string pointed
+       to by nptr to int.  The behavior is the same as
+
+           strtol(nptr, NULL, 10);
+
+       except that atoi() does not detect errors.
+
+       The atol() and atoll() functions behave the same as atoi(), except that
+       they  convert the initial portion of the string to their return type of
+       long or long long.
+
+
+RETURN VALUE
+       The converted value or 0 on error.
 
 <pre> <code> 
 int atoi(const char *nptr)
@@ -35,7 +49,8 @@ int atoi(const char *nptr)
 
 ---
 ## 📁 void bzero(void *s, size_t n);
-Erases  the  data  in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes containing '\0') to that area.
+The  bzero()  function  erases  the  data  in the n bytes of the memory starting at the location pointed to by s, by writing zeros (bytes  containing '\0') to that area.
+
 
 <pre> <code> 
 void	ft_bzero(void *s, size_t n)
