@@ -26,6 +26,35 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		j++;
 	if (start >= j)
 		return (ft_strdup(""));
+	// if available length of string to copy < specified len, then reduce len
+	if ((j - start) < len)
+		len = j - start;
+	substr = (char *)malloc(len + 1);
+	if (!substr)
+		return (NULL);
+	while (i < len)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*substr;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	if (!s)
+		return (NULL);
+	while (s[j])
+		j++;
+	if (start >= j)
+		return (ft_strdup(""));
 	substr = (char *)malloc(len + 1);
 	if (!substr)
 		return (NULL);
