@@ -266,20 +266,22 @@ For a nonzero return value, the sign is determined by the sign  of  the differen
 
 If n is zero, the return value is zero.
 <pre> <code> 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*unsigned_s;
+	const unsigned char	*us1;
+	const unsigned char	*us2;
 	size_t				i;
 
-	unsigned_s = s;
+	us1 = s1;
+	us2 = s2;
 	i = 0;
 	while (i < n)
 	{
-		if (unsigned_s[i] == (unsigned char)c)
-			return ((void *)unsigned_s + i);
+		if (us1[i] != us2[i])
+			return (us1[i] - us2[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 </code> </pre>
 ---
