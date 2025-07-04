@@ -101,27 +101,12 @@ void	*ft_calloc(size_t nmemb, size_t size)
 Checks for an alphanumeric character; it is equivalent to (isalpha(c) || isdigit(c)
 
 <pre> <code> 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_isalnum(int c)
 {
-	unsigned char		*ptr;
-	size_t				i;
-	unsigned long long	total;
-
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	total = (unsigned long long)nmemb * (unsigned long long)size;
-	if (nmemb != 0 && total / nmemb != size)
-		return (NULL);
-	i = 0;
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	while (i < nmemb * size)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-	return ((void *)ptr);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	return (0);
 }
 </code> </pre>
 ---
